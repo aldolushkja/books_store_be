@@ -3,9 +3,11 @@ package com.aldolushkja.books_store.books.boundary;
 import com.aldolushkja.books_store.books.control.BookByAuthorDTO;
 import com.aldolushkja.books_store.books.control.BookByGenreDTO;
 import com.aldolushkja.books_store.books.entity.Book;
+import com.aldolushkja.books_store.interceptors.Loggable;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import org.jboss.logging.Logger;
 
+import javax.inject.Inject;
 import javax.persistence.Query;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -15,8 +17,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Path("books")
+@Loggable
 public class BooksResource {
-    private static final Logger LOGGER = Logger.getLogger("BooksResource");
+
+    @Inject
+    Logger LOGGER;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

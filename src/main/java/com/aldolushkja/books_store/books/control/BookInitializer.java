@@ -8,6 +8,7 @@ import org.jboss.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 
 @ApplicationScoped
@@ -15,8 +16,8 @@ public class BookInitializer {
 
     public Faker faker;
 
-    private static final Logger LOGGER = Logger.getLogger("BookInitializer");
-
+    @Inject
+    Logger LOGGER;
 
     void onStart(@Observes StartupEvent ev) {
         LOGGER.info("The application is starting...");

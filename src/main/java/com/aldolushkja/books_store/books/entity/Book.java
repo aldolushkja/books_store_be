@@ -9,9 +9,9 @@ import java.util.Set;
 @Entity
 public class Book extends PanacheEntity {
     public String title;
-    public String isbn;
     @Column(name = "published_at")
     public String publishedAt;
+    public String isbn;
 
     @Lob
     public String description;
