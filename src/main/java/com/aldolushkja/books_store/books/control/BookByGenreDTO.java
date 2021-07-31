@@ -1,15 +1,15 @@
 package com.aldolushkja.books_store.books.control;
 
-public class BookByAuthorDTO {
+public class BookByGenreDTO {
 
     private Long id;
     private String title;
-    private String authorName;
+    private String genreName;
 
-    public BookByAuthorDTO(Long id, String title, String authorName) {
+    public BookByGenreDTO(Long id, String title, String genreName) {
         this.id = id;
         this.title = title;
-        this.authorName = authorName;
+        this.genreName = genreName;
     }
 
     public Long getId() {
@@ -20,16 +20,16 @@ public class BookByAuthorDTO {
         return title;
     }
 
-    public String getAuthorName() {
-        return authorName;
+    public String getGenreName() {
+        return genreName;
     }
 
     @Override
     public String toString() {
-        return "ByAuthorDTO{" +
+        return "BookByGenreDTO{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", authorName='" + authorName + '\'' +
+                ", genreName='" + genreName + '\'' +
                 '}';
     }
 }
