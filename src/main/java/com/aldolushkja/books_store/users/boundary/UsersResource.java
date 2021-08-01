@@ -7,7 +7,7 @@ import javax.annotation.security.PermitAll;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.json.Json;
-import javax.ws.rs.GET;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -24,6 +24,7 @@ public class UsersResource {
     @POST
     @Path("/signin")
     @PermitAll
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response signin(AuthRequest authRequest) {
         String token = usersService.doLogin(authRequest);
