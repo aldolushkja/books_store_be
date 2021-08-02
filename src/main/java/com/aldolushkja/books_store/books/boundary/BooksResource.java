@@ -7,6 +7,7 @@ import com.aldolushkja.books_store.interceptors.Loggable;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import org.jboss.logging.Logger;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.persistence.Query;
 import javax.ws.rs.GET;
@@ -41,6 +42,7 @@ public class BooksResource {
 
     @GET
     @Path("/by-author/{author_id}")
+    @RolesAllowed({"USER", "ADMIN"})
     @Produces(MediaType.APPLICATION_JSON)
     public Response findByAuthorId(@PathParam("author_id") Long authorId) {
         Query query = Book.getEntityManager().createQuery("select distinct new com.aldolushkja.books_store.books.control.BookByAuthorDTO(b.id,b.title,ba.name) from Book b join b.authors ba where ba.id = :id", BookByAuthorDTO.class);
@@ -50,6 +52,7 @@ public class BooksResource {
 
     @GET
     @Path("/by-genre/{genre_id}")
+    @RolesAllowed({"USER", "ADMIN"})
     @Produces(MediaType.APPLICATION_JSON)
     public Response findByGenreId(@PathParam("genre_id") Long genreId) {
         Query query = Book.getEntityManager().createQuery("select distinct new com.aldolushkja.books_store.books.control.BookByGenreDTO(b.id,b.title,ba.name) from Book b join b.genres ba where ba.id = :id", BookByGenreDTO.class);
